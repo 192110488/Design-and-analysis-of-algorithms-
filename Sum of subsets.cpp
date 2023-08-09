@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 #include <stdlib.h>
 static int total_nodes;
 void printValues(int A[], int size){
@@ -27,12 +27,19 @@ void generateSubsets(int s[], int size, int target_sum){
    subset_sum(s, tuplet_vector, size, 0, 0, 0, target_sum);
    free(tuplet_vector);
 }
-int main(){
-   int set[] = {6,2,8,1,5};
-   int size = sizeof(set) / sizeof(set[0]);
+int main()
+{
+   int set[20],size,sum,i;
+   printf("enter the no.of numbers and sum value:");
+   scanf("%d%d",&size,&sum);
+   printf("enter the elements:");
+   for(i=0;i<size;i++)
+   {
+   		scanf("%d",&set[i]);
+   }
    printf("The set is ");
    printValues(set , size);
-   generateSubsets(set, size, 9);
+   generateSubsets(set, size,sum);
    printf("Total Nodes generated %d\n", total_nodes);
    return 0;
 }
