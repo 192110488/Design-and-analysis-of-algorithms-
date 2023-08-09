@@ -24,8 +24,13 @@ int main()
 			}
 		}
 	}
+	if(m>0 && n>0 && m<s && n<s)
+	{
 	printf("m th largest value :%d\n ",a[s-m]);
 	printf("m th largest value :%d\n ",a[n-1]);
 	printf(" The sum of mth and nth is :%d",a[m]+a[n-1]);
 	printf(" The diff of mth and nth is :%d",a[m]-a[n-1]);
+	}
+	else
+		printf("invalid input.");
 }
