@@ -10,7 +10,11 @@ int binomialCoeff(int n, int k)
 }
 int main()
 {
-    int n = 5, k = 2;
+    int n,k;
+    printf("enter n value:");
+    scanf("%d",&n);
+    printf("enter k value:");
+    scanf("%d",&k);
     printf("Value of C(%d, %d) is %d ", n, k,
            binomialCoeff(n, k));
     return 0;
