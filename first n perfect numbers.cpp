@@ -5,7 +5,7 @@ int main()
 	int n,k=0,i,j,a[20],sum=0;
 	printf("enter the n value::");
 	scanf("%d",&n);
-		for(i=6;i<m;i++)
+		for(i=1;i<m;i++)
 		{
 			if(k!=n)
 			{
