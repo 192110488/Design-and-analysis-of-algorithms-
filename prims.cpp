@@ -1,60 +1,41 @@
-#include <stdio.h>
-#include <limits.h>
- 
-#define V 5
- 
-int minKey(int key[], int mstSet[]) {
-    int min = INT_MAX, min_index;
-    int v;
-    for (v = 0; v < V; v++)
-        if (mstSet[v] == 0 && key[v] < min)
-            min = key[v], min_index = v;
- 
-    return min_index;
-}
- 
-int printMST(int parent[], int n, int graph[V][V]) {
-    int i;
-    printf("Edge   Weight\n");
-    for (i = 1; i < V; i++)
-        printf("%d - %d    %d \n", parent[i], i, graph[i][parent[i]]);
-}
- 
-void primMST(int graph[V][V]) {
-    int parent[V];
-    int key[V], i, v, count; 
-    int mstSet[V]; 
- 
-    for (i = 0; i < V; i++)
-        key[i] = INT_MAX, mstSet[i] = 0;
- 
-    key[0] = 0;
-    parent[0] = -1; 
- 
-    for (count = 0; count < V - 1; count++) {
-        int u = minKey(key, mstSet);
-        mstSet[u] = 1;
- 
-        for (v = 0; v < V; v++)
- 
-            if (graph[u][v] && mstSet[v] == 0 && graph[u][v] < key[v])
-                parent[v] = u, key[v] = graph[u][v];
-    }
-    printMST(parent, V, graph);
-}
- 
-int main() {
-    int graph[V][V],a,b;
-    printf("enter the input matrix=\n");    
-    for(a=0;a<V;a++)    
-    {    
-		for(b=0;b<V;b++)    
-        {    
-             scanf("%d",&graph[a][b]);  
-         }    
-    }
- 
-    primMST(graph);
- 
-    return 0;
+ #include<stdio.h>
+#include<conio.h>
+int a,b,u,v,n,i,j,ne=1;
+int visited[10]= {0},min,mincost=0,cost[10][10];
+int main() 
+{
+	printf("\n Enter the number of nodes:"); 
+	scanf("%d",&n);
+	printf("\n Enter the adjacency matrix:\n");
+	for (i=1;i<=n;i++)
+	{
+ 		for (j=1;j<=n;j++) 
+		{
+			scanf("%d",&cost[i][j]);
+			if(cost[i][j]==0)
+ 				cost[i][j]=999;
+		}	
+	}
+	visited[1]=1;
+	printf("\n");
+	while(ne<n)
+	{
+		for (i=1,min=999;i<=n;i++)
+ 			for (j=1;j<=n;j++)
+ 				if(cost[i][j]<min)
+ 					if(visited[i]!=0) 
+					{
+						min=cost[i][j];
+						a=u=i;
+						b=v=j;
+					}
+					if(visited[u]==0 || visited[v]==0) 
+					{
+						printf("\n Edge %d:(%d %d) cost:%d",ne++,a,b,min);
+						mincost+=min;
+						visited[b]=1;
+					}
+					cost[a][b]=cost[b][a]=999;
+	}
+	printf("\n Minimun cost=%d",mincost);
 }
